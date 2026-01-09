@@ -1,0 +1,41 @@
+{
+  "user_id": "user_001",
+  "username": "Lê Khánh Vinh",
+  "email": "vinhlekhanh@example.com",
+  "conversations": [
+    {
+      "conversation_id": "conv_001",
+      "title": "Hỏi về Gradient Descent",
+      "created_at": "2026-01-09T09:00:00Z",
+      "updated_at": "2026-01-09T09:10:00Z",
+      "messages": [
+        {
+          "id": "msg_001",
+          "role": "user",
+          "content": "Gradient descent là gì?",
+          "timestamp": "2026-01-09T09:01:00Z"
+        },
+        {
+          "id": "msg_002",
+          "role": "bot",
+          "content": "Gradient descent là thuật toán tối ưu...",
+          "timestamp": "2026-01-09T09:01:05Z"
+        }
+      ]
+    },
+    {
+      "conversation_id": "conv_002",
+      "title": "Xây dựng UI ChatGPT",
+      "created_at": "2026-01-09T10:00:00Z",
+      "updated_at": "2026-01-09T10:20:00Z",
+      "messages": [
+        {
+          "id": "msg_003",
+          "role": "user",
+          "content": "Làm sao tạo UI chat giống ChatGPT?",
+          "timestamp": "2026-01-09T10:01:00Z"
+        }
+      ]
+    }
+  ]
+}
