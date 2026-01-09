@@ -25,7 +25,7 @@ const NavigationBar = () => {
 
       {isOpenNavigationBar ? <div>
         <HistoryChat />
-        <div>
+        {/* <div>
           <Button text="Đăng nhập" variant="default" onClick={() => {
             const user: User = {
               _id: "user_001",
@@ -38,7 +38,7 @@ const NavigationBar = () => {
 
           }} />
           <PrintConsole />
-        </div>
+        </div> */}
       </div> : null}
 
 
