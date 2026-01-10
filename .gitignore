@@ -1,96 +1,41 @@
-####################################
+# Python
+__pycache__/
+*.pyc
+.python-version
+.venv/
+venv/
+env/
+ENV/
+
+# Model files
+models/
+**/models/
+
+
 # Dependencies
-####################################
 node_modules/
-.pnp
-.pnp.js
 
-####################################
-# Next.js build output
-####################################
+# Build outputs
 .next/
-out/
-build/
 dist/
+build/
 
-####################################
-# Runtime data & logs
-####################################
-logs/
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-
-####################################
-# Environment variables
-####################################
+# Environment
 .env
-.env.*
-!.env.example
+.env.local
 
-####################################
-# Backend / Server specific
-####################################
-coverage/
-tmp/
-temp/
-.cache/
-
-####################################
-# Database
-####################################
-*.sqlite
-*.sqlite3
-*.db
-
-####################################
-# OS generated files
-####################################
+# OS
 .DS_Store
 Thumbs.db
-desktop.ini
 
-####################################
-# IDE / Editor
-####################################
+# IDE
 .vscode/
 .idea/
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
 
-####################################
-# Testing
-####################################
-coverage/
-.nyc_output/
+# Logs
+*.log
+logs/
 
-####################################
-# TypeScript
-####################################
-*.tsbuildinfo
-
-####################################
-# Package managers
-####################################
-.yarn/*
-!.yarn/releases
-!.yarn/plugins
-!.yarn/sdks
-!.yarn/versions
-
-####################################
-# Docker
-####################################
-docker-data/
-*.pid
-
-####################################
-# Misc
-####################################
-*.tgz
-*.bak
-*.swp
+# Database
+*.db
+*.sqlite3
