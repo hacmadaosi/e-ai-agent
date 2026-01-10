@@ -4,9 +4,10 @@ import { useEffect, useState } from "react";
 interface TypingTextProps {
   text: string;
   speed?: number;
+  className?: string;
 }
 
-export default function TypingText({ text, speed = 100 }: TypingTextProps) {
+export default function TypingText({ text, speed = 100, className }: TypingTextProps) {
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
@@ -17,5 +18,5 @@ export default function TypingText({ text, speed = 100 }: TypingTextProps) {
     return () => clearInterval(interval);
   }, [text, speed]);
 
-  return <span>{text.substring(0, index)}</span>;
+  return <span className={className}>{text.substring(0, index)}</span>;
 }

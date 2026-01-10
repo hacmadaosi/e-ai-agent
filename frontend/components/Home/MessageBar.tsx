@@ -116,8 +116,8 @@ const MessageBar = ({ className }: MessageBarProps) => {
   };
 
   return (
-    <div className={`w-full h-fit flex justify-center pb-4 ${className}`} >
-      <div className='w-5/12 flex flex-col gap-2'>
+    <div className={`w-full h-fit flex justify-center pb-4 bg-white ${className}`} >
+      <div className='w-1/2 flex flex-col gap-2'>
         <div className="grid grid-cols-2 gap-2">
           {files.map((file, index) => (
             <FileCard

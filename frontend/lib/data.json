@@ -18,8 +18,116 @@
         {
           "id": "msg_002",
           "role": "bot",
-          "content": "Gradient descent là thuật toán tối ưu...",
+          "content": "Gradient descent là thuật toán tối ưu hóa lặp được sử dụng để tìm cực tiểu của hàm số. Nó hoạt động bằng cách tính gradient (đạo hàm) của hàm loss và cập nhật các tham số theo hướng ngược lại với gradient.",
           "timestamp": "2026-01-09T09:01:05Z"
+        },
+        {
+          "id": "msg_003",
+          "role": "user",
+          "content": "Tại sao cần gradient descent?",
+          "timestamp": "2026-01-09T09:02:00Z"
+        },
+        {
+          "id": "msg_004",
+          "role": "bot",
+          "content": "Vì trong học máy, chúng ta cần tìm các tham số tối ưu để minimize hàm loss. Với models phức tạp, không thể giải nghiệm tường minh được, nên gradient descent giúp tìm nghiệm xấp xỉ.",
+          "timestamp": "2026-01-09T09:02:10Z"
+        },
+        {
+          "id": "msg_005",
+          "role": "user",
+          "content": "Có bao nhiêu loại gradient descent?",
+          "timestamp": "2026-01-09T09:03:00Z"
+        },
+        {
+          "id": "msg_006",
+          "role": "bot",
+          "content": "Có 3 loại chính: Batch Gradient Descent (dùng toàn bộ dữ liệu), Stochastic Gradient Descent (dùng 1 mẫu ngẫu nhiên), và Mini-batch Gradient Descent (dùng một nhóm nhỏ dữ liệu).",
+          "timestamp": "2026-01-09T09:03:15Z"
+        },
+        {
+          "id": "msg_007",
+          "role": "user",
+          "content": "Learning rate là gì?",
+          "timestamp": "2026-01-09T09:04:00Z"
+        },
+        {
+          "id": "msg_008",
+          "role": "bot",
+          "content": "Learning rate (tốc độ học) là một hyperparameter điều khiển độ lớn của bước cập nhật tham số. Nếu quá lớn có thể vượt qua điểm tối ưu, quá nhỏ sẽ hội tụ chậm.",
+          "timestamp": "2026-01-09T09:04:10Z"
+        },
+        {
+          "id": "msg_009",
+          "role": "user",
+          "content": "Batch size ảnh hưởng thế nào?",
+          "timestamp": "2026-01-09T09:05:00Z"
+        },
+        {
+          "id": "msg_010",
+          "role": "bot",
+          "content": "Batch size lớn cho gradient ổn định hơn nhưng tốn bộ nhớ và chậm hơn mỗi epoch. Batch size nhỏ thì nhanh hơn nhưng gradient nhiều nhiễu, có thể giúp tránh local minima.",
+          "timestamp": "2026-01-09T09:05:20Z"
+        },
+        {
+          "id": "msg_011",
+          "role": "user",
+          "content": "Local minima là gì?",
+          "timestamp": "2026-01-09T09:06:00Z"
+        },
+        {
+          "id": "msg_012",
+          "role": "bot",
+          "content": "Local minima là điểm cực tiểu cục bộ của hàm loss - thấp nhất trong một vùng lân cận, nhưng không phải thấp nhất toàn cục. Đây là một thách thức với gradient descent.",
+          "timestamp": "2026-01-09T09:06:15Z"
+        },
+        {
+          "id": "msg_013",
+          "role": "user",
+          "content": "Có cách nào khắc phục local minima?",
+          "timestamp": "2026-01-09T09:07:00Z"
+        },
+        {
+          "id": "msg_014",
+          "role": "bot",
+          "content": "Có thể dùng momentum, SGD với noise, simulated annealing, hoặc các thuật toán tối ưu tiên tiến như Adam, RMSprop. Khởi tạo tham số tốt cũng giúp giảm nguy cơ.",
+          "timestamp": "2026-01-09T09:07:30Z"
+        },
+        {
+          "id": "msg_015",
+          "role": "user",
+          "content": "Momentum là gì?",
+          "timestamp": "2026-01-09T09:08:00Z"
+        },
+        {
+          "id": "msg_016",
+          "role": "bot",
+          "content": "Momentum là kỹ thuật giúp gradient descent hội tụ nhanh hơn và giảm dao động. Nó thêm một phần của bước cập nhật trước đó vào bước hiện tại, giống như quán tính.",
+          "timestamp": "2026-01-09T09:08:20Z"
+        },
+        {
+          "id": "msg_017",
+          "role": "user",
+          "content": "Adam optimizer khác gì SGD?",
+          "timestamp": "2026-01-09T09:09:00Z"
+        },
+        {
+          "id": "msg_018",
+          "role": "bot",
+          "content": "Adam kết hợp ưu điểm của Momentum và RMSprop, tự động điều chỉnh learning rate cho từng tham số. Nó thường hội tụ nhanh hơn và ổn định hơn SGD thuần túy.",
+          "timestamp": "2026-01-09T09:09:25Z"
+        },
+        {
+          "id": "msg_019",
+          "role": "user",
+          "content": "Có nên dùng gradient descent cho mọi bài toán?",
+          "timestamp": "2026-01-09T09:10:00Z"
+        },
+        {
+          "id": "msg_020",
+          "role": "bot",
+          "content": "Không phải luôn luôn. Với bài toán nhỏ, có thể dùng nghiệm giải tích. Với bài toán có ràng buộc phức tạp, có thể dùng các phương pháp khác như evolutionary algorithms. Nhưng gradient descent vẫn là lựa chọn phổ biến nhất cho neural networks.",
+          "timestamp": "2026-01-09T09:10:40Z"
         }
       ]
     },

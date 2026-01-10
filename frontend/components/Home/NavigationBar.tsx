@@ -7,11 +7,11 @@ import Button from "../common/Button";
 import HistoryChat from "../ui/components/CustomHistoryChat";
 import { User } from "@/types/user";
 import PrintConsole from "../ui/components/PrintConsole";
-
-
+import { useStateStore } from "@/stories/useAuthStore";
 
 const NavigationBar = () => {
   const [isOpenNavigationBar, setIsOpenNavigationBar] = useState(false);
+  const { setUser } = useStateStore();
 
   return (
     <div className={cn('h-screen bg-gray-50 flex flex-col transition-all duration-300 ease-in-out border-r border-black/5', isOpenNavigationBar ? 'w-80' : 'w-14  items-center')}>
@@ -25,20 +25,17 @@ const NavigationBar = () => {
 
       {isOpenNavigationBar ? <div>
         <HistoryChat />
-        {/* <div>
+        {/* Nút đăng nhập */}
+        <div className="flex justify-center">
           <Button text="Đăng nhập" variant="default" onClick={() => {
             const user: User = {
               _id: "user_001",
               name: "Lê Khánh Vinh",
               email: "vinhlekhanh@example.com"
             };
-            localStorage.setItem("user", JSON.stringify(user));
-
-            console.log(localStorage.getItem("user"));
-
+            setUser(user);
           }} />
-          <PrintConsole />
-        </div> */}
+        </div>
       </div> : null}
 
 

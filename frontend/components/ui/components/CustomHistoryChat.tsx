@@ -5,8 +5,8 @@ import { cn } from "@/lib/utils";
 import { useStateStore } from '@/stories/useAuthStore';
 
 const HistoryChat = () => {
-    const user = JSON.parse(localStorage.getItem("user") || "{}");
-    const conversations = data.user_id === user._id ? data.conversations : [];
+    const user = useStateStore((state) => state.user);
+    const conversations = data.user_id === user?._id ? data.conversations : [];
     const { currentConversationId, setCurrentConversationId } = useStateStore();
 
 

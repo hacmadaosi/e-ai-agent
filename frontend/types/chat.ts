@@ -14,3 +14,10 @@ export interface Conversation {
   updated_at: string;
   messages: Message[];
 }
+
+export interface ChatData {
+  user_id: string;
+  username: string;
+  email: string;
+  conversations: Conversation[];
+}
