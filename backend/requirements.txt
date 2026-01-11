@@ -1,0 +1,18 @@
+# ===== Core Web =====
+Flask==2.3.3
+python-dotenv==1.0.0
+
+# ===== LLM (GGUF / llama.cpp) =====
+llama-cpp-python==0.2.48
+
+# ===== Transformers stack (CPU-safe) =====
+torch==2.1.2
+transformers==4.45.2
+accelerate==0.34.2
+
+# ===== Notebook / ipykernel =====
+ipykernel==6.29.5
+jupyter-client==8.6.3
+traitlets==5.14.3
+
+numpy==1.26.4
