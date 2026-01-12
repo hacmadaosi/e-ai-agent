@@ -11,35 +11,54 @@ import { useStateStore } from "@/stories/useAuthStore";
 
 const NavigationBar = () => {
   const [isOpenNavigationBar, setIsOpenNavigationBar] = useState(false);
-  const { setUser } = useStateStore();
+  const { setUser, user, setConversation, setChatData, setCurrentConversationId } = useStateStore();
+
+  const handleLogin = () => {
+    const user: User = {
+      _id: "user_001",
+      name: "Lê Khánh Vinh",
+      email: "vinhlekhanh@example.com"
+    };
+    setUser(user);
+    setChatData(user._id)
+  }
+
+  const handleLogout = () => {
+    setUser(null);
+    setConversation(null);
+    setCurrentConversationId(null)
+  }
+
+  const handleNewConversation = () => {
+    setConversation(null);
+    setCurrentConversationId(null)
+  }
 
   return (
-    <div className={cn('h-screen bg-gray-50 flex flex-col transition-all duration-300 ease-in-out border-r border-black/5', isOpenNavigationBar ? 'w-80' : 'w-14  items-center')}>
-      <div className='flex justify-between items-center py-4 px-4 select-none'>
+    <div className={cn('h-screen bg-gray-50 flex flex-col items-center transition-all duration-300 ease-in-out border-r border-black/5 pb-4', isOpenNavigationBar ? 'w-80' : 'w-14  items-center')}>
+      {/* Điều khiển thanh điều hướng*/}
+      <div className='flex justify-between w-full items-center py-4 px-4 select-none'>
         {isOpenNavigationBar ? <div className="font-bold"><TypingText text={"Education AI Agent"} speed={80} /></div> : null}
         <ChevronRight size={20} className={cn('cursor-pointer active:scale-90 transition-transform duration-300', isOpenNavigationBar ? 'rotate-180' : 'rotate-0')} onClick={() => setIsOpenNavigationBar(!isOpenNavigationBar)} />
       </div>
-      <div className="flex w-full justify-center my-2 transition-all duration-300">
-        {isOpenNavigationBar ? <Button text="Trò chuyện mới" variant="rounded" /> : <MessageCirclePlus size={20} />}
-      </div>
 
-      {isOpenNavigationBar ? <div>
-        <HistoryChat />
-        {/* Nút đăng nhập */}
-        <div className="flex justify-center">
-          <Button text="Đăng nhập" variant="default" onClick={() => {
-            const user: User = {
-              _id: "user_001",
-              name: "Lê Khánh Vinh",
-              email: "vinhlekhanh@example.com"
-            };
-            setUser(user);
-          }} />
+      {/* Nội dung  */}
+      {isOpenNavigationBar ? <>
+        <div className={cn("hidden w-full justify-center my-2 transition-all duration-300", user && "flex")}>
+          <Button text="Trò chuyện mới" variant="rounded" onClick={handleNewConversation} />
         </div>
-      </div> : null}
+        <HistoryChat />
 
+        <div className="h-full"></div>
 
-
+        <Button text={user ? "Đăng xuất" : "Đăng nhập"} variant="default" onClick={() => {
+          if (user) {
+            handleLogout();
+          } else {
+            handleLogin();
+          }
+        }} />
+      </> : <MessageCirclePlus size={20} />}
     </div>
   )
 }

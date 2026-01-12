@@ -14,7 +14,7 @@ const ChatCard = ({ message, role }: ChatCardProps) => {
           {message}
         </div>
       ) : (
-        <div className="my-8 border-b py-4">
+        <div className=" border-b py-4">
           {message}
         </div>
       )}

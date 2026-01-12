@@ -9,13 +9,9 @@ import { Input } from '../ui/input';
 import { toast } from 'sonner';
 
 const ChatWindow = () => {
-  const { user, currentConversationId } = useStateStore();
-  const data = rawData as ChatData;
+  const { user, conversation, currentConversationId } = useStateStore();
   const messagesEndRef = useRef<HTMLDivElement>(null);
   
-  const conversation = data.conversations.find(conv => conv.conversation_id === currentConversationId);
-  const messages = conversation ? conversation.messages : [];
-
   const [title, setTitle] = useState(conversation?.title || "");
   const [isEditing, setIsEditing] = useState(false);
 
@@ -23,11 +19,11 @@ const ChatWindow = () => {
   useEffect(() => {
     setTitle(conversation?.title || "");
     setIsEditing(false);
-  }, [conversation]);
+  }, [currentConversationId]);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  }, [messages, currentConversationId]);
+  }, [conversation?.messages, currentConversationId]);
 
   // Xử lý khi input mất focus
   const handleBlur = () => {
@@ -71,7 +67,7 @@ const ChatWindow = () => {
   return (
     <div className='w-full h-screen flex flex-col items-center'>
       {/* Tiêu đề */}
-      {currentConversationId ? (
+      {conversation ? (
         <div className="relative my-4">
           <Input 
             className='w-fit text-base border-none shadow-none text-center bg-transparent focus:bg-white focus:border focus:border-gray-300 transition-all px-4 py-2 rounded'
@@ -85,14 +81,14 @@ const ChatWindow = () => {
           
         </div>
       ) : (
-        <h1 className='text-base my-4'>
-          Chào mừng {user ? user.name : "bạn"} đến với Education AI Agent
+        <h1 className='text-3xl my-4 absolute bottom-1/2'>
+          {user ? `Chào ${user.name.trim().split(/\s+/).pop()}, tôi có thể giúp gì cho bạn?` : "Chào mừng bạn đến với Education AI Agent"} 
         </h1>
       )}
 
       {/* Nội dung hội thoại */}
-      <div className="flex flex-col w-1/2 h-full overflow-y-auto scrollbar-hide pb-36">
-        {messages.map((message, index) => (
+      <div className="flex flex-col w-1/2 h-full gap-8 overflow-y-auto scrollbar-hide pb-36">
+        {conversation?.messages.map((message, index) => (
           <ChatCard key={index} role={message.role} message={message.content} />
         ))}
         <div ref={messagesEndRef} />

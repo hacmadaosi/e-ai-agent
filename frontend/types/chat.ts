@@ -17,7 +17,5 @@ export interface Conversation {
 
 export interface ChatData {
   user_id: string;
-  username: string;
-  email: string;
   conversations: Conversation[];
 }

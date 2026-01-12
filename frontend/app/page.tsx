@@ -1,7 +1,10 @@
 import ChatWindow from '@/components/Home/ChatWindow'
 import MessageBar from '@/components/Home/MessageBar'
 import NavigationBar from '@/components/Home/NavigationBar'
-import React from 'react'
+import { cn } from '@/lib/utils';
+import { useStateStore } from '@/stories/useAuthStore';
+import React, { use } from 'react'
+
 
 const page = () => {
   return (
@@ -9,7 +12,7 @@ const page = () => {
       <NavigationBar />
       <div className='w-full relative'>
       <ChatWindow />
-      <MessageBar className='absolute bottom-0 left-1/2 -translate-x-1/2' />
+      <MessageBar  />
       </div>
     </div>
   )

@@ -1,16 +1,14 @@
 'use client';
-import React, { useRef, useState } from 'react'
+import React, { use, useRef, useState } from 'react'
 import { Textarea } from "@/components/ui/textarea"
 import { Button } from '../ui/button';
-import { ArrowRight, CirclePlus, Plus, SendHorizontal } from 'lucide-react';
+import { ArrowRight, CirclePlus, Plus, RefreshCw, RotateCw, SendHorizontal, Square } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { toast } from "sonner";
 import FileCard from '../ui/components/CustomFileCard';
+import { useStateStore } from '@/stories/useAuthStore';
 
 
-interface MessageBarProps {
-  className?: string;
-}
 
 const LINE_HEIGHT = 24;
 const MAX_ROWS = 10;
@@ -23,12 +21,12 @@ const ALLOWED_TYPES = [
 ];
 const ALLOWED_EXTENSIONS = ['.pdf', '.doc', '.docx'];
 
-const MessageBar = ({ className }: MessageBarProps) => {
+const MessageBar = () => {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
-  const [message, setMessage] = useState("");
   const [files, setFiles] = useState<File[]>([]);
 
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const { sendMessage, isSendingMessage, conversation, message, setMessage} = useStateStore();
 
   const openFileDialog = () => {
     fileInputRef.current?.click();
@@ -101,7 +99,6 @@ const MessageBar = ({ className }: MessageBarProps) => {
     if (!el) return;
 
     setMessage(el.value);
-    console.log("Message:", el.value);
 
     el.style.height = "auto";
     const maxHeight = LINE_HEIGHT * MAX_ROWS;
@@ -115,8 +112,15 @@ const MessageBar = ({ className }: MessageBarProps) => {
     }
   };
 
+  const handleSendMessage = () => {
+    if (!message.trim() && !isSendingMessage) return;
+
+    sendMessage(message);
+    setMessage("");
+  }
+
   return (
-    <div className={`w-full h-fit flex justify-center pb-4 bg-white ${className}`} >
+    <div className={cn(`w-full h-fit flex justify-center pb-4 bg-white absolute bottom-0 left-1/2 -translate-x-1/2`, !conversation && 'bottom-1/3 translate-y-1/2')} >
       <div className='w-1/2 flex flex-col gap-2'>
         <div className="grid grid-cols-2 gap-2">
           {files.map((file, index) => (
@@ -145,7 +149,18 @@ const MessageBar = ({ className }: MessageBarProps) => {
               <Plus size={20} />
               <span className='text-xs'>Thêm tệp</span>
             </div>
-            <div className='bg-black p-2 rounded-full cursor-pointer active:scale-95'><ArrowRight size={20} color='white' /></div>
+            <button disabled={message.length === 0} className={cn('bg-black p-2 rounded-full cursor-pointer active:scale-95', message.length === 0 && 'opacity-80 cursor-not-allowed')}>
+              {isSendingMessage ? (
+                <Square size={20} color="white" className=''/>
+              ) : (
+                <ArrowRight
+                  size={20}
+                  color="white"
+                  onClick={handleSendMessage}
+                />
+              )}
+
+            </button>
           </div>
           <div>
             <input
