@@ -3,6 +3,7 @@ import { User } from "@/types/user";
 import { create } from "zustand";
 import rawData from "@/lib/data.json";
 import { ChatData, Conversation, Message } from "@/types/chat";
+import { chatService } from "@/services/chat.service"
 
 export const useStateStore = create<AuthState>((set, get) => ({
     currentConversationId: "",
@@ -46,7 +47,7 @@ export const useStateStore = create<AuthState>((set, get) => ({
     isSendingMessage: false,
 
     sendMessage: async (message: string) => {
-        const { conversation, chatData, setCurrentConversationId, setConversation } = get();
+        const { conversation, chatData, setCurrentConversationId, setConversation, user } = get();
         set({ isSendingMessage: true });
         try {
             const newMessage = {
@@ -57,7 +58,7 @@ export const useStateStore = create<AuthState>((set, get) => ({
             } as Message;
 
             if (conversation) {
-                conversation?.messages.push(
+                conversation.messages.push(
                     newMessage
                 )
             } else {
@@ -72,8 +73,20 @@ export const useStateStore = create<AuthState>((set, get) => ({
                 setCurrentConversationId(newConversation.conversation_id)
                 setConversation(newConversation.conversation_id)
             }
+            const result = await chatService.sendMessage(user?._id ?? "", message)
 
-            console.log("Sending message: ", conversation);
+            const response = {
+                id: `msg-${Date.now()}`,
+                role: "bot",
+                content: result,
+                timestamp: new Date().toISOString()
+            } as Message;
+
+            conversation?.messages.push(
+                response
+            )
+            console.log(conversation?.messages)
+
 
         } catch (error) {
             console.error("Failed to send message:", error);

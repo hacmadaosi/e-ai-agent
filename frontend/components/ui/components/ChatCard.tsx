@@ -10,7 +10,7 @@ const ChatCard = ({ message, role }: ChatCardProps) => {
   return (
     <div>
       {role === "user" ? (
-        <div className="bg-gray-200 w-fit px-4 py-3 max-w-xl rounded-xl ml-auto ">
+        <div className="bg-gray-100 w-fit px-4 py-3 max-w-xl rounded-xl ml-auto ">
           {message}
         </div>
       ) : (

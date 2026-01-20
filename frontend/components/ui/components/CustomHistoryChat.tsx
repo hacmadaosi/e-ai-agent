@@ -23,9 +23,9 @@ const HistoryChat = () => {
                             }
                             }
                             className={cn(
-                                "cursor-pointer rounded-l-sm py-2 text-sm truncate whitespace-nowrap",
+                                "cursor-pointer rounded-l-sm py-2 text-black text-sm truncate whitespace-nowrap",
                                 currentConversationId === conv.conversation_id
-                                    ? "bg-gray-200 font-medium px-3 border-r-2 border-black"
+                                    ? "bg-gray-100 font-medium px-3 border-r-2 border-black"
                                     : "hover:bg-gray-100 hover:px-3 hover:border-r-2 border-black"
                             )}
                         >

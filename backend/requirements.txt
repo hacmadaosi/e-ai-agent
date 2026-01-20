@@ -1,18 +1,16 @@
 # ===== Core Web =====
 Flask==2.3.3
 python-dotenv==1.0.0
+flask-cors==4.0.1
 
-# ===== LLM (GGUF / llama.cpp) =====
-llama-cpp-python==0.2.48
+# ===== Llama =====
+llama-cpp-python==0.2.90
 
-# ===== Transformers stack (CPU-safe) =====
+# ===== PyTorch (CUDA enabled) =====
 torch==2.1.2
-transformers==4.45.2
-accelerate==0.34.2
+torchvision==0.16.2
+torchaudio==2.1.2
 
-# ===== Notebook / ipykernel =====
-ipykernel==6.29.5
-jupyter-client==8.6.3
-traitlets==5.14.3
-
-numpy==1.26.4
+# ===== Utils =====
+python-dotenv
+numpy==1.24.3

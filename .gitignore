@@ -10,7 +10,7 @@ ENV/
 # Model files
 models/
 **/models/
-
+lab/models
 
 # Dependencies
 node_modules/
